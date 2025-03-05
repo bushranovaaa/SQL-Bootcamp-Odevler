@@ -1,0 +1,40 @@
+## A. Belirli Kolonları Seçme
+## **Soru:** Çalışanların sadece ad, soyad ve maaş bilgilerini getiren SQL sorgusunu yazınız.
+SELECT FirstName, LastName, Salary
+FROM Employees;
+
+Açıklama:
+Bu sorgu, çalışan tablosundan sadece isim, soyisim ve maaş bilgilerini getirir. Diğer sütunlar dahil edilmez.
+
+## B. DISTINCT Komutu ile Tekrarları Önleme
+**Soru:** Çalışanların çalıştıkları departmanları benzersiz olarak listeleyen SQL sorgusunu yazınız.
+SELECT DISTINCT Department
+FROM Employees;
+
+**Açıklama:**
+Bu sorgu, tekrar eden departman isimlerini sadece bir kez gösterecek şekilde listeleme yapar.
+
+## C. Belirli Bir Departmana Ait Çalışanları Listeleme
+**Soru:** Sadece IT departmanında çalışanları listeleyen SQL sorgusunu yazınız.
+SELECT *
+FROM Employees
+WHERE Department = 'IT';
+
+**Açıklama:**
+Burada WHERE komutu kullanılarak sadece IT departmanında çalışan kişiler filtrelenmiştir.
+
+## D. Maaşa Göre Sıralama
+**Soru:** Çalışanları maaşlarına göre büyükten küçüğe sıralayan SQL sorgusunu yazınız.
+SELECT *
+FROM Employees
+ORDER BY Salary DESC;
+**Açıklama:**
+Bu sorgu, çalışanları maaşlarına göre büyükten küçüğe doğru sıralar. DESC kullanıldığı için en yüksek maaşlı kişi en üstte olur.
+
+## E. Kolonları Birleştirme (Concatenation)
+**Soru:** Çalışanları ad ve soyadlarını birleştirerek tam isim oluşturan SQL sorgusunu yazın.
+SELECT CONCAT(FirstName, ' ', LastName) AS FullName
+FROM Employees;
+
+**Açıklama:**
+Bu sorgu, CONCAT fonksiyonunu kullanarak isim ve soyismi birleştirir ve yeni bir sütun olarak FullName şeklinde gösterir.
