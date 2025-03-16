@@ -1,51 +1,46 @@
-A. Belirli Kolonları Seçme
-Soru: Çalışanların sadece ad, soyad ve maaş bilgilerini getiren SQL sorgusunu yazınız.
+## A. Belirli Kolonları Seçme
+**Soru:** Çalışanların sadece ad, soyad ve maaş bilgilerini getiren SQL sorgusunu yazınız.
 
-sql
-Kopyala
-Düzenle
-SELECT FirstName, LastName, Salary
-FROM Employees;
-Açıklama: Bu sorgu, Employees tablosundan sadece çalışanların adı, soyadı ve maaş bilgilerini getirir. Diğer sütunlar dahil edilmez.
+''' sql
+    SELECT FirstName, LastName, Salary
+    FROM Employees;
 
-B. DISTINCT Komutu ile Tekrarları Önleme
-Soru: Çalışanların çalıştıkları departmanları benzersiz olarak listeleyen SQL sorgusunu yazınız.
+**Açıklama:** Bu sorgu, Employees tablosundan sadece çalışanların adı, soyadı ve maaş bilgilerini getirir. Diğer sütunlar dahil edilmez.
 
-sql
-Kopyala
-Düzenle
-SELECT DISTINCT DepartmentID
-FROM Employees;
-Açıklama: Bu sorgu, tekrar eden departman kimliklerini sadece bir kez gösterir. Eğer departman adlarını görmek isterseniz, Departments tablosundan DepartmentName sütununu kullanmanız gerekecek.
+## B. DISTINCT Komutu ile Tekrarları Önleme
+**Soru:** Çalışanların çalıştıkları departmanları benzersiz olarak listeleyen SQL sorgusunu yazınız.
 
-C. Belirli Bir Departmana Ait Çalışanları Listeleme
-Soru: Sadece IT departmanında çalışanları listeleyen SQL sorgusunu yazınız.
+''' sql
+    SELECT DISTINCT DepartmentID
+    FROM Employees;
 
-sql
-Kopyala
-Düzenle
-SELECT * 
-FROM Employees
-WHERE DepartmentID = 1;  -- IT departmanının ID'si 1
-Açıklama: Burada, WHERE komutu kullanılarak sadece IT departmanında çalışanlar filtrelenmiştir. IT departmanının DepartmentID değeri 1 olduğundan, sorguda bu ID kullanılır.
+**Açıklama:** Bu sorgu, tekrar eden departman kimliklerini sadece bir kez gösterir. Eğer departman adlarını görmek isterseniz, Departments tablosundan DepartmentName sütununu kullanmanız gerekecek.
 
-D. Maaşa Göre Sıralama
-Soru: Çalışanları maaşlarına göre büyükten küçüğe sıralayan SQL sorgusunu yazınız.
+## C. Belirli Bir Departmana Ait Çalışanları Listeleme
+**Soru:** Sadece IT departmanında çalışanları listeleyen SQL sorgusunu yazınız.
 
-sql
-Kopyala
-Düzenle
-SELECT * 
-FROM Employees 
-ORDER BY Salary DESC;
-Açıklama: Bu sorgu, çalışanları maaşlarına göre büyükten küçüğe sıralar. DESC komutu kullanıldığı için en yüksek maaşlı çalışan en üstte yer alır.
+'''sql
+   SELECT * 
+   FROM Employees
+   WHERE DepartmentID = 1;  -- IT departmanının ID'si 1
 
-E. Kolonları Birleştirme (Concatenation)
+**Açıklama:** Burada, WHERE komutu kullanılarak sadece IT departmanında çalışanlar filtrelenmiştir. IT departmanının DepartmentID değeri 1 olduğundan, sorguda bu ID kullanılır.
+
+## D. Maaşa Göre Sıralama
+**Soru:** Çalışanları maaşlarına göre büyükten küçüğe sıralayan SQL sorgusunu yazınız.
+
+''' sql
+    SELECT * 
+    FROM Employees 
+    ORDER BY Salary DESC;
+
+**Açıklama:** Bu sorgu, çalışanları maaşlarına göre büyükten küçüğe sıralar. DESC komutu kullanıldığı için en yüksek maaşlı çalışan en üstte yer alır.
+
+## E. Kolonları Birleştirme (Concatenation)
 Soru: Çalışanları ad ve soyadlarını birleştirerek tam isim oluşturan SQL sorgusunu yazınız.
 
-sql
-Kopyala
-Düzenle
-SELECT CONCAT(FirstName, ' ', LastName) AS FullName
-FROM Employees;
-Açıklama: Bu sorgu, CONCAT fonksiyonunu kullanarak FirstName ve LastName sütunlarını birleştirir ve yeni bir sütun olarak FullName şeklinde gösterir.
+''' sql
+    SELECT CONCAT(FirstName, ' ', LastName) AS FullName
+    FROM Employees;
+
+**Açıklama:** Bu sorgu, CONCAT fonksiyonunu kullanarak FirstName ve LastName sütunlarını birleştirir ve yeni bir sütun olarak FullName şeklinde gösterir.
