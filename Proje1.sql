@@ -4,29 +4,29 @@ GO
 USE FirstLessonDB;
 GO
 
--- Departmanlar tablosu
+-- Departmanlar tablosu oluşturuluyor
 CREATE TABLE Departments(
-    DepartmentID INT PRIMARY KEY,
+    DepartmentID INT IDENTITY(1,1) PRIMARY KEY,  -- IDENTITY eklenerek otomatik artan ID
     DepartmentName NVARCHAR(50) NOT NULL
 );
 
--- Çalışanlar tablosu 
+-- Çalışanlar tablosu oluşturuluyor
 CREATE TABLE Employees(
-    EmployeeID INT PRIMARY KEY IDENTITY(1,1),
+    EmployeeID INT PRIMARY KEY IDENTITY(1,1),  -- EmployeeID de otomatik artacak şekilde IDENTITY kullanıldı
     FirstName NVARCHAR(100) NOT NULL,
     LastName NVARCHAR(100) NOT NULL,
     Age TINYINT NOT NULL,
     DepartmentID INT,
-    Salary DECIMAL(10,2),
+    Salary DECIMAL(10,2) NOT NULL,  -- Salary'ye NOT NULL eklendi, her çalışan için maaş zorunlu
     JoinDate DATE,
-    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)  -- Departman ile ilişkilendirme
 );
 
--- Departmanlara veri ekleme
-INSERT INTO Departments(DepartmentID, DepartmentName)
-VALUES (1, N'IT'), (2, N'HR'), (3, N'Finance');
+-- Departmanlara veri ekleniyor
+INSERT INTO Departments(DepartmentName)
+VALUES (N'IT'), (N'HR'), (N'Finance');
 
--- Çalışanlara veri ekleme
+-- Çalışanlar için veri ekleniyor
 INSERT INTO Employees(FirstName, LastName, Age, DepartmentID, Salary, JoinDate) 
 VALUES 
     ('John', 'Doe', 30, 1, 55000, '2020-01-15'),
@@ -36,22 +36,23 @@ VALUES
     ('Mark', 'Black', 50, 1, 75000, '2015-11-05'),
     ('Lucy', 'Green', 40, 2, 60000, '2017-10-10');
 
--- Tüm çalışanları listeleme
+-- Çalışanları listeleme
 SELECT * FROM Employees;
--- Tüm departmanları listeleme
+
+-- Departmanları listeleme
 SELECT * FROM Departments;
 
--- Çalışma 1: Belirli kolonları seçme
+-- Çalışanlardan yalnızca isim, soyisim ve maaş bilgisi
 SELECT FirstName, LastName, Salary FROM Employees;
 
--- Çalışma 2: DISTINCT ile tekrarları önleme
+-- Çalışanların departman bilgilerini listelerken, tekrarları engelleme
 SELECT DISTINCT FirstName, DepartmentID FROM Employees;
 
--- Çalışma 3: Belirli departmandaki çalışanları listeleme
+-- İkinci departmandaki (HR) çalışanları listeleme
 SELECT * FROM Employees WHERE DepartmentID = 2;
 
--- Çalışma 4: Maaşa göre sıralama (Büyükten küçüğe)
+-- Çalışanları maaşlarına göre büyükten küçüğe sıralama
 SELECT * FROM Employees ORDER BY Salary DESC;
 
--- Çalışma 5: Ad ve soyadı birleştirme
+-- Ad ve soyad bilgilerini birleştirerek tam isim oluşturma
 SELECT CONCAT(FirstName, ' ', LastName) AS FullName FROM Employees;
