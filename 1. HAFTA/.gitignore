@@ -1,0 +1,26 @@
+# 1. HAFTA klasöründeki .gitattributes dosyasını dışla
+1. HAFTA/.gitattributes
+
+# Tüm .txt dosyalarını dışla
+*.txt
+
+# SQL dosyaları hariç tutulabilir
+*.sql
+
+# Geçici dosyalar ve log dosyalarını dışla
+*.log
+*.tmp
+
+# Diğer geçici sistem dosyalarını dışla
+.DS_Store
+Thumbs.db
+
+# IDE ve editör dosyaları
+.vscode/
+.idea/
+
+# Derleme çıktıları
+build/
+bin/
+*.class
+*.exe
